@@ -1,9 +1,17 @@
-@use '../styles/variables.scss';
+@use '../../styles/variables' as *;
 
-.toolbar {
+.black-toolbar {
     height: 56px;
     width: 100%;
     background-color: $background-tool-color;
     color: $foreground-color;
-    border-radius: 50%;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+
+    .title {
+        font-size: 18px;
+        font-weight: bold;
+        padding: 0 20px;
+    }
 }

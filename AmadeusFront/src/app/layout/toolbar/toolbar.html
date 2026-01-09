@@ -1,3 +1,6 @@
-<div class="toolbar">
-    <router-outlet></router-outlet>
+<div class="black-toolbar">
+    @if (title) {
+        <span class="title">{{ title }}</span>
+    }
+    <ng-content></ng-content>
 </div>
