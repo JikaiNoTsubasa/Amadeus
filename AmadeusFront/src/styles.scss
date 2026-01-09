@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'app/styles/variables' as *;
+
+* {
+    //margin: 0;
+    //padding: 0px;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Varela Round", sans-serif;
+}
+
+body {
+    padding: 10px;
+    //background-color: $background-main-color;
+    background: linear-gradient(to top right, $background-gradient-start, $background-gradient-end);
+}
+
+.topbar {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: $background-tool-color;
+    color: $foreground-color;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border: 0;
+    border-radius: 40px;
+
+    .title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+}
+
+.card{
+    background-color: $background-panel-color;
+    border-radius: 10px;
+    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.main-container{
+    display: flex;
+    height: 100%;
+}
+
+.main-content{
+    padding: 10px;
+    width: 100%;
+}

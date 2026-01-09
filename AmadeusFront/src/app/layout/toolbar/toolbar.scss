@@ -1,0 +1,9 @@
+@use '../styles/variables.scss';
+
+.toolbar {
+    height: 56px;
+    width: 100%;
+    background-color: $background-tool-color;
+    color: $foreground-color;
+    border-radius: 50%;
+}

@@ -1,0 +1,22 @@
+<div class="left-menu">
+    <div class="menu-logo">
+        <i class="fa-brands fa-artstation"></i>
+    </div>
+    <div class="menu-items">
+        <a class="menu-item" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="fa fa-home"></i>
+            <span class="menu-tooltip">Dashboard</span>
+        </a>
+
+        <a class="menu-item" routerLink="my-projects" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+            <i class="fa fa-folder"></i>
+            <span class="menu-tooltip">My Projects</span>
+        </a>
+
+        <a class="menu-item" routerLink="users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+            <i class="fa fa-users"></i>
+            <span class="menu-tooltip">Users</span>
+        </a>
+
+    </div>
+</div>
