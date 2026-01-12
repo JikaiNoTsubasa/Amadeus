@@ -1,0 +1,21 @@
+{
+  "dotnet.defaultSolution": "./AmadeusBack/AmadeusBack.sln",
+  "omnisharp.projectFilesExcludePattern": "**/node_modules/**,**/bin/**,**/obj/**,**/dist/**,**/.angular/**",
+  "omnisharp.enableRoslynAnalyzers": true,
+  "omnisharp.enableEditorConfigSupport": true,
+  "omnisharp.enableImportCompletion": true,
+  "omnisharp.organizeImportsOnFormat": true,
+  
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/bin": true,
+    "**/obj": true
+  },
+  
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bin": true,
+    "**/obj": true,
+    "**/dist": true
+  }
+}

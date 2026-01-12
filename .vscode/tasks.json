@@ -42,6 +42,50 @@
           }
         }
       }
+    },
+    {
+        "label": "01 - Migration Add",
+        "type": "shell",
+        "command": "dotnet",
+        "args" : ["ef", "migrations", "add", "${input:migration_name}", "--project", "AmadeusBack/amadeus-api", "-v"],
+        "problemMatcher": "$msCompile"
+    },
+    {
+        "label": "02 - Migration Apply",
+        "type": "shell",
+        "command": "dotnet",
+        "args" : ["ef", "database", "update", "--project", "AmadeusBack/amadeus-api", "-v"],
+        "problemMatcher": "$msCompile"
+    },
+    {
+        "label": "03 - Run API (Debug)",
+        "type": "shell",
+        "command": "dotnet",
+        "args": ["run", "--project", "AmadeusBack/amadeus-api"],
+        "options": {
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        "isBackground": true,
+        "problemMatcher": {
+            "owner": "csharp",
+            "pattern": "$msCompile",
+            "background": {
+                "activeOnStart": true,
+                "beginsPattern": "^\\s*Now listening on:",
+                "endsPattern": "^\\s*Application started\\."
+            }
+        }
     }
-  ]
+  ],
+    // ========== INPUTS ========================
+    "inputs": [
+    // ----- ef ------
+    {
+      "id": "migration_name",
+      "type": "promptString",
+      "description": "Migration Name"
+    }
+    ]
 }

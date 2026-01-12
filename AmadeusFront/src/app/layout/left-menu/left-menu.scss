@@ -10,12 +10,17 @@
     .menu-logo{
         width: 56px;
         height: 56px;
-        border-radius: 50%;
-        background-color: $background-panel-color;
+        //border-radius: 50%;
+        //background-color: $background-panel-color;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
+
+        .logo-image{
+            width: 35px;
+            height: 35px;
+        }
     }
     
 }
@@ -85,3 +90,4 @@
         }
     }
 }
+
