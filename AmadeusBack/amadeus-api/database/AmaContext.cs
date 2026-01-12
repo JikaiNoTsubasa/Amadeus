@@ -13,6 +13,17 @@ public class AmaContext(DbContextOptions<AmaContext> options) : DbContext(option
         modelBuilder.Entity<User>()
             .HasIndex(u => u.Email)
             .IsUnique();
+
+        modelBuilder.Entity<User>()
+            .HasMany(u => u.Projects)
+            .WithOne(p => p.Owner)
+            .HasForeignKey(p => p.OwnerId);
+
+        modelBuilder.Entity<Project>()
+            .HasOne(u => u.Customer)
+            .WithMany(p => p.Projects)
+            .HasForeignKey(p => p.CustomerId);
+
         base.OnModelCreating(modelBuilder);
     }
 

@@ -7,4 +7,6 @@ public class User : Entity
     public bool CanLogin { get; set; }
     public string? Avatar { get; set; }
     public DateTime? LastConnection { get; set; }
+
+    public List<Project>? Projects { get; set; }
 }
