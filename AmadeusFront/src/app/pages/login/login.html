@@ -2,13 +2,19 @@
     <div class="login-card">
         <img src="amadeus_logo.png" alt="Amadeus Logo" class="login-logo"/>
         <div class="login-title">Amadeus</div>
-        <div class="splitter"></div>
-        <div>
-            <form>
-                <input type="text" placeholder="Email" class="login-input" name="email"/>
-                <input type="password" placeholder="Password" class="login-input" name="password"/>
-                <button type="button" class="login-button">Login</button>
+        
+        @if (!loginProgress) {
+            <div class="splitter"></div>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <input type="email" placeholder="Email" class="login-input" name="email" formControlName="email"/>
+                <input type="password" placeholder="Password" class="login-input" formControlName="password"/>
+                <button type="submit" class="login-button">Login</button>
             </form>
-        </div>
+        }
+        @else {
+            <div class="loading-bar-container">
+                <div class="loading-bar"></div>
+            </div>
+        }
     </div>
 </div>
