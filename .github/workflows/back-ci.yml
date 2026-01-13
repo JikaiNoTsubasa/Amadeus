@@ -43,3 +43,11 @@ jobs:
             source: './AmadeusBack/publish/*'
             target: '/home/jikai/amadeus'
             strip_components: 2
+
+        - name: Restart Amadeus service via SSH
+          uses: appleboy/ssh-action@v1
+          with:
+            host: ${{ secrets.FTP_SERVER }}
+            username: ${{ secrets.FTP_USERNAME }}
+            password: ${{ secrets.FTP_PASSWORD }}
+            script: sudo systemctl restart amadeus-api.service
