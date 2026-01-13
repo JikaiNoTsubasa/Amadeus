@@ -43,4 +43,4 @@ jobs:
                   port: 22
                   source: './AmadeusFront/dist/Amadeus/browser/*'
                   target: '/var/www/html/amadeus'
-                  strip_components: 3
+                  strip_components: 4
