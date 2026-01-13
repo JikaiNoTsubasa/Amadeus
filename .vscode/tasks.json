@@ -61,7 +61,7 @@
         "label": "03 - Run API (Debug)",
         "type": "shell",
         "command": "dotnet",
-        "args": ["run", "--project", "AmadeusBack/amadeus-api"],
+        "args": ["run", "--project", "AmadeusBack/amadeus-api", "--urls", "http://localhost:5300"],
         "options": {
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"

@@ -9,7 +9,7 @@ import { ResponseLogin } from "../models/dto/ResponseLogin";
 export class AmaService {
     constructor(private http: HttpClient) { }
 
-    url = 'http://localhost:5093/api';
+    url = 'http://localhost:5300/api';
 
     //#region Login
     authenticate(email: string, password: string): Observable<ResponseLogin> {
