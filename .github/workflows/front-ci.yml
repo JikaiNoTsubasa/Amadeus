@@ -1,0 +1,46 @@
+name: Deploy Amadeus Front to VPS
+
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Install Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+
+            - name: Install dependencies
+              run: npm install
+              working-directory: ./AmadeusFront
+
+            - name: Build
+              run: npm run build -- --configuration=production
+              working-directory: ./AmadeusFront
+
+            - name: Clean remote directory via SSH
+              uses: appleboy/ssh-action@v1
+              with:
+                  host: ${{ secrets.FTP_SERVER }}
+                  username: ${{ secrets.FTP_USERNAME }}
+                  password: ${{ secrets.FTP_PASSWORD }}
+                  script: rm -rf /var/www/html/amadeus/*
+
+            - name: Deploy
+              uses: appleboy/scp-action@v1
+              with:
+                  host: ${{ secrets.FTP_SERVER }}
+                  username: ${{ secrets.FTP_USERNAME }}
+                  password: ${{ secrets.FTP_PASSWORD }}
+                  port: 22
+                  source: './AmadeusFront/dist/Amadeus/browser/*'
+                  target: '/var/www/html/amadeus'
+                  strip_components: 3
