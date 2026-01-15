@@ -34,26 +34,26 @@ public class Entity
     public bool IsDeleted { get; set; } = false;
     public bool IsArchived { get; set; } = false;
 
-    public void MarkCreated(long? userId)
+    public virtual void MarkCreated(long? userId)
     {
         CreatedAt = DateTime.UtcNow;
         CreatedById = userId;
     }
 
-    public void MarkUpdated(long? userId)
+    public virtual void MarkUpdated(long? userId)
     {
         UpdatedAt = DateTime.UtcNow;
         UpdatedById = userId;
     }
 
-    public void MarkDeleted(long? userId)
+    public virtual void MarkDeleted(long? userId)
     {
         DeletedAt = DateTime.UtcNow;
         DeletedById = userId;
         IsDeleted = true;
     }
 
-    public void MarkArchived(long? userId)
+    public virtual void MarkArchived(long? userId)
     {
         ArchivedAt = DateTime.UtcNow;
         ArchivedById = userId;

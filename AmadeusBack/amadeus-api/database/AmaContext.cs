@@ -7,6 +7,8 @@ namespace amadeus_api.database;
 public class AmaContext(DbContextOptions<AmaContext> options) : DbContext(options)
 {
     public DbSet<User> Users { get; set; }
+    public DbSet<Project> Projects { get; set; }
+    public DbSet<Customer> Customers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

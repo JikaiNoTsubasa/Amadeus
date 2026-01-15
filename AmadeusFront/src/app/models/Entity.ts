@@ -1,3 +1,5 @@
+import { User } from "./User";
+
 export interface Entity{
     id: number;
     name: string;
@@ -5,12 +7,8 @@ export interface Entity{
     updatedAt: Date;
     deletedAt: Date;
     archivedAt: Date;
-    createdById: number;
-    createdByName: string;
-    updatedById: number;
-    updatedByName: string;
-    deletedById: number;
-    deletedByName: string;
-    archivedById: number;
-    archivedByName: string;
+    createdBy: User | null;
+    updatedBy: User | null;
+    deletedBy: User | null;
+    archivedBy: User | null;
 }
