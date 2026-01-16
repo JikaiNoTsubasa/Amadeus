@@ -17,7 +17,7 @@ public class ProjectManager(AmaContext context) : AmaManager(context)
 
     public List<Project> FetchMyProjects(long userId)
     {
-        return [.. _context.Projects.Include(p => p.Owner).Include(p => p.Customer).Where(p => p.OwnerId == userId)];
+        return [.. _context.Projects.Include(p => p.Owner).Include(p => p.Customer).Where(p => p.OwnerId == userId && p.IsDeleted == false && p.IsArchived == false)];
     }
 
     public Project CreateProject(string name, long ownerId, long loggedUserId, long? customerId = null, string? description = null)

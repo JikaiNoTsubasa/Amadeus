@@ -27,7 +27,8 @@ public static class DTOHelper
         {
             Id = model.Id,
             Name = model.Name,
-            Email = model.Email
+            Email = model.Email,
+            Avatar = model.Avatar
         };
     }
     #endregion

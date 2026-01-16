@@ -1,0 +1,101 @@
+@use '../../styles/variables' as *;
+
+.project-card{
+
+    background-color: $background-panel-color;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      width: 100px;
+      height: 16px;
+      background: inherit; // même couleur que la card
+      border-radius: 8px 8px 0 0;
+      //box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+    }
+    
+    //box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+      
+      /*
+      &::before {
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+      }*/
+    }
+
+    .title{
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .avatar-container{
+        top: 10px;
+        right: 10px;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+
+        .avatar-tooltip {
+            display: none;
+            position: absolute;
+            background-color: $background-tool-color;
+            color: $foreground-color;
+            padding: 5px 10px;
+            border-radius: 40px;
+            font-size: 16px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            
+        }
+
+        &:hover {
+            .avatar{
+                border: 2px solid $primary-color;
+
+            }
+
+            .avatar-tooltip {
+                display: block;
+                opacity: 1;
+                left: 50px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 100;
+            }
+        }
+    }
+
+    .avatar{
+        position: relative;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        z-index: 10;
+    }
+
+    .chip{
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 20px;
+        background-color: $primary-color;
+        color: $background-tool-color;
+        font-size: 10px;
+        font-weight: bold;
+        margin-right: 10px;
+        min-width: 100px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,16 @@
+<div class="project-card">
+    @if (project?.owner?.avatar) {
+        <div class="avatar-container">
+            <img class="avatar" [src]="project?.owner?.avatar"/>
+            <div class="avatar-tooltip">{{ project?.owner?.name ?? "No Name" }}</div>
+        </div>
+    }
+    @else {
+        <div class="avatar-container">
+            <img class="avatar" src="default_avatar.png"/>
+            <div class="avatar-tooltip">Unknown</div>
+        </div>
+    }
+    <div class="title">{{ project?.name ?? "No Name" }}</div>
+    <div class="chip">{{ project?.status }}</div>
+</div>

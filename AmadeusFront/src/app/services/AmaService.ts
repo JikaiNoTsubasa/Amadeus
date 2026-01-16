@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ResponseLogin } from "../models/dto/ResponseLogin";
 import { environment } from "../../environments/environment";
+import { Project } from "../models/Project";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,12 @@ export class AmaService {
             password: password
         };
         return this.http.post<ResponseLogin>(`${this.url}/auth/login`, body);
+    }
+    //#endregion
+
+    //#region Projects
+    fetchMyProjects(): Observable<Project[]> {
+        return this.http.get<Project[]>(`${this.url}/myprojects`);
     }
     //#endregion
 }

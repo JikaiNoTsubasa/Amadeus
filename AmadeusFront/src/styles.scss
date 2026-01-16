@@ -10,13 +10,23 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: "Varela Round", sans-serif;
+    //font-family: "Varela Round", sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
 }
 
 body {
     padding: 10px;
     //background-color: $background-main-color;
     background: linear-gradient(to top right, $background-gradient-start, $background-gradient-end);
+}
+
+.master-title{
+    font-family: "Poppins", sans-serif;
+    font-size: 36px;
+    font-weight: 200;
+    color: $background-tool-color;
+    margin: 20px 0px;
 }
 
 .topbar {
@@ -82,4 +92,15 @@ body {
   100% {
     left: 100%;
   }
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .grid-element {
+        flex: 1 1 300px; // grow, shrink, base width
+        max-width: 400px;
+    }
 }

@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 })
 export class Toolbar {
   @Input() title: string | null = null;
+  @Input() showSearch: boolean = false;
 }

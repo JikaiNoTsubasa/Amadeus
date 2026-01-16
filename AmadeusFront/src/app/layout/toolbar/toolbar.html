@@ -2,5 +2,11 @@
     @if (title) {
         <span class="title">{{ title }}</span>
     }
+    <div class="right">
+        @if (showSearch) {
+            <input type="text" placeholder="Search..." class="searchbar">
+        }
+
+    </div>
     <ng-content></ng-content>
 </div>

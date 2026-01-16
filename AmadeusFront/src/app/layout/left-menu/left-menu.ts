@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/AuthService';
 
 @Component({
   selector: 'app-left-menu',
@@ -10,4 +11,9 @@ import { RouterModule } from '@angular/router';
 })
 export class LeftMenu {
 
+  authService = inject(AuthService);
+
+  onLogout(){
+    this.authService.logout();
+  }
 }
