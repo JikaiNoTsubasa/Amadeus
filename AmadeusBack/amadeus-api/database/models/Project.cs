@@ -17,6 +17,15 @@ public class Project : Entity
     public long? CustomerId { get; set; }
     public Customer? Customer { get; set; }
 
+    [ForeignKey(nameof(CMDB))]
+    public long? CMDBId { get; set; }
+    public CMDB? CMDB { get; set; }
+
+    public List<ProjectPhase>? Phases { get; set; }
+    public List<ProjectTask>? Tasks { get; set; }
+
+
+
     override public void MarkDeleted(long? userId)
     {
         base.MarkDeleted(userId);

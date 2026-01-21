@@ -32,6 +32,32 @@ public class AmaContext(DbContextOptions<AmaContext> options) : DbContext(option
             .WithMany(p => p.Projects)
             .HasForeignKey(p => p.CustomerId);
 
+        modelBuilder.Entity<Project>()
+            .HasMany(u => u.Phases)
+            .WithOne(p => p.Project)
+            .HasForeignKey(p => p.ProjectId);
+
+        modelBuilder.Entity<Project>()
+            .HasMany(u => u.Tasks)
+            .WithOne(p => p.Project)
+            .HasForeignKey(p => p.ProjectId);
+
+        modelBuilder.Entity<ProjectTask>()
+            .HasOne(u => u.Project)
+            .WithMany(p => p.Tasks)
+            .HasForeignKey(p => p.ProjectId);
+
+        modelBuilder.Entity<ProjectTask>()
+            .HasOne(u => u.Phase)
+            .WithMany(p => p.Tasks)
+            .HasForeignKey(p => p.ProjectId);
+
+        modelBuilder.Entity<Project>()
+            .HasOne(u => u.CMDB)
+            .WithOne(p => p.Project);
+
+        
+
         base.OnModelCreating(modelBuilder);
     }
 
