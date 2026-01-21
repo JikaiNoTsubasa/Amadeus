@@ -10,14 +10,25 @@ public class ProjectManager(AmaContext context) : AmaManager(context)
 {
     private static readonly ILog log = LogManager.GetLogger(typeof(ProjectManager));
 
+    #region Project
+
+    private IQueryable<Project> GeneralProjectQuery()
+    {
+        return _context.Projects
+            .Include(p => p.Owner)
+            .Include(p => p.Customer)
+            .Include(p=>p.Phases)
+            .Include(p=>p.Tasks);
+    }
+
     public List<Project> FetchAllProjects()
     {
-        return [.. _context.Projects.Include(p => p.Owner).Include(p => p.Customer)];
+        return [.. GeneralProjectQuery().OrderBy(p=>p.Id)];
     }
 
     public List<Project> FetchMyProjects(long userId)
     {
-        return [.. _context.Projects.Include(p => p.Owner).Include(p => p.Customer).Where(p => p.OwnerId == userId && p.IsDeleted == false && p.IsArchived == false)];
+        return [.. GeneralProjectQuery().Where(p => p.OwnerId == userId && p.IsDeleted == false && p.IsArchived == false)];
     }
 
     public Project CreateProject(string name, long ownerId, long loggedUserId, long? customerId = null, string? description = null)
@@ -49,4 +60,23 @@ public class ProjectManager(AmaContext context) : AmaManager(context)
         _context.SaveChanges();
         log.Info($"Project with ID: {projectId} deleted successfully.");
     }
+
+    #endregion
+
+    #region Phases
+    public ProjectPhase CreateProjectPhase(long projectId, string phaseName, long loggedUserId)
+    {
+        // Fetch project
+        var project = _context.Projects.Include(p=>p.Phases).FirstOrDefault(p=>p.Id == projectId) ?? throw new Exception($"Project with ID {projectId} does not exist.");
+
+        ProjectPhase phase = new()
+        {
+            Name = phaseName
+        };
+        phase.MarkCreated(loggedUserId);
+        project.Phases?.Add(phase);
+        _context.SaveChanges();
+        return phase;
+    }
+    #endregion
 }

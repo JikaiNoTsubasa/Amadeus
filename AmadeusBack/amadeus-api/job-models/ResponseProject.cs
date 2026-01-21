@@ -9,4 +9,6 @@ public record class ResponseProject : ResponseEntity
     public string? Summary { get; set; }
     public ResponseUserEmbedded Owner { get; set; } = null!;
     public ResponseCustomerEmbedded? Customer { get; set; }
+    public int? PhasesCount { get; set; }
+    public int? TasksCount { get; set; }
 }

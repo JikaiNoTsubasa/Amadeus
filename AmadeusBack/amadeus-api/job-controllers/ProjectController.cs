@@ -43,4 +43,12 @@ public class ProjectController(ProjectManager manager) : AmaController
         _manager.DeleteProject(projectId, _loggedUserId);
         return StatusCode(HttpStatusCode.NoContent.GetHashCode());
     }
+
+    [HttpPost]
+    [Route("api/projects/{id:long}/phases")]
+    public IActionResult CreateProjectPhase([FromRoute] long id, [FromBody] RequestCreateProjectPhase model)
+    {
+        var phase = _manager.CreateProjectPhase(id, model.Name, _loggedUserId).ToDTO();
+        return StatusCode(201, phase);
+    }
 }

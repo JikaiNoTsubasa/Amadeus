@@ -24,7 +24,6 @@
   <ItemGroup>
     <Folder Include="exceptions\" />
     <Folder Include="job-controllers\" />
-    <Folder Include="job-models\" />
     <Folder Include="services\" />
   </ItemGroup>
 

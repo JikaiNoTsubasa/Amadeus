@@ -14,10 +14,21 @@ public static class DTOHelper
             Description = model.Description,
             Summary = model.Summary,
             Owner = model.Owner.ToDTOEmbedded(),
-            Customer = model.Customer?.ToDTOEmbedded()
+            Customer = model.Customer?.ToDTOEmbedded(),
+            PhasesCount = model.Phases?.Count,
+            TasksCount = model.Tasks?.Count
         };
         prj.FeedEntityInfo(model);
         return prj;
+    }
+    #endregion
+
+    #region Phase
+    public static ResponseProjectPhase ToDTO(this ProjectPhase model)
+    {
+        var phase = new ResponseProjectPhase();
+        phase.FeedEntityInfo(model);
+        return phase;
     }
     #endregion
 
