@@ -1,8 +1,20 @@
 <div>
     <app-toolbar title="Dashboard">
     </app-toolbar>
-    <div class="card">
-        <h1>Users</h1>
-        <p>5 users</p>
+    <div class="grid-container">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <h1>Todos</h1>
+                    <app-todo-container></app-todo-container>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <h1>Users</h1>
+                    <p>5 users</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

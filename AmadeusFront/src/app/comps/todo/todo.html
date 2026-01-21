@@ -1,0 +1,14 @@
+<div class="todo-element">
+    <div class="status">
+        {{todo?.status}}
+    </div>
+    @if (todo?.status != 'DONE') {
+        <div class="next-button" (click)="onNextStateEvent()"><i class="fa-solid fa-forward-step"></i></div>
+    }
+    @else {
+        <div class="next-button" (click)="onDeleteEvent()"><i class="fa-solid fa-xmark"></i></div>
+    }
+    <div class="title">
+        {{todo?.name ?? "No Name"}}
+    </div>
+</div>

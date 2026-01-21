@@ -29,7 +29,7 @@
         //transition: border-color 0.3s;
         //border: 1px solid $primary-color;
         border: none;
-        font-family: "Varela Round", sans-serif;
+        font-family: "Poppins", sans-serif;
         background-color: $primary-color;
         color: $background-tool-color;
         font-size: 16px;
@@ -43,4 +43,10 @@
             border-color: $accent-color;
         }*/
     }
+
+    .button-bar{
+        display: flex;
+        gap: 10px;
+    }
+
 }

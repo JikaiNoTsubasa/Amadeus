@@ -6,6 +6,7 @@ public record class ResponseProject : ResponseEntity
 {
     public ProjectStatus Status { get; set; }
     public string? Description { get; set; }
+    public string? Summary { get; set; }
     public ResponseUserEmbedded Owner { get; set; } = null!;
     public ResponseCustomerEmbedded? Customer { get; set; }
 }

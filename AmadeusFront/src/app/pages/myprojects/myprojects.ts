@@ -3,10 +3,11 @@ import { Toolbar } from "../../layout/toolbar/toolbar";
 import { AmaService } from '../../services/AmaService';
 import { Project } from '../../models/Project';
 import { ProjectCard } from "../../comps/project-card/project-card";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-myprojects',
-  imports: [Toolbar, ProjectCard],
+  imports: [Toolbar, ProjectCard, RouterLink],
   templateUrl: './myprojects.html',
   styleUrl: './myprojects.scss',
 })

@@ -9,6 +9,7 @@ public class AmaContext(DbContextOptions<AmaContext> options) : DbContext(option
     public DbSet<User> Users { get; set; }
     public DbSet<Project> Projects { get; set; }
     public DbSet<Customer> Customers { get; set; }
+    public DbSet<TodoTask> Todos { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -20,6 +21,11 @@ public class AmaContext(DbContextOptions<AmaContext> options) : DbContext(option
             .HasMany(u => u.Projects)
             .WithOne(p => p.Owner)
             .HasForeignKey(p => p.OwnerId);
+
+        modelBuilder.Entity<User>()
+            .HasMany(u => u.Todos)
+            .WithOne(t => t.Owner)
+            .HasForeignKey(t => t.OwnerId);
 
         modelBuilder.Entity<Project>()
             .HasOne(u => u.Customer)

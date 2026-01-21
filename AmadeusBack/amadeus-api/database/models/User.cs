@@ -9,4 +9,5 @@ public class User : Entity
     public DateTime? LastConnection { get; set; }
 
     public List<Project>? Projects { get; set; }
+    public List<TodoTask>? Todos { get; set; }
 }

@@ -1,0 +1,13 @@
+<div>
+    @if (loadingTodos) {
+        <app-loading-bar></app-loading-bar>
+    }
+    @else {
+        @if(todos != null) {
+            <p class="desc">You have <b>{{todos.length}}</b> todos.</p>
+            @for (item of todos; track $index) {
+                <app-todo [todo]="item" (evNextState)="onNextState($event)" (evDelete)="onDelete($event)"></app-todo>
+            }
+        }
+    }
+</div>

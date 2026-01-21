@@ -29,6 +29,7 @@ builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<AmaManager>();
 builder.Services.AddScoped<AuthManager>();
 builder.Services.AddScoped<ProjectManager>();
+builder.Services.AddScoped<TodoManager>();
 
 builder.Services.AddControllers(o => {
         o.ModelBinderProviders.Insert(0, new UTCDateTimeBinderProvider());

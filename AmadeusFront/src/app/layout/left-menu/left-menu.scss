@@ -2,14 +2,16 @@
 
 .left-menu {
     height: 100%;
+    width: 80px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     box-sizing: border-box;
     padding-top: 10px;
 
     .menu-logo{
         width: 56px;
-        height: 56px;
+        height: 70px;
         //border-radius: 50%;
         //background-color: $background-panel-color;
         display: flex;

@@ -104,3 +104,88 @@ body {
         max-width: 400px;
     }
 }
+
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  
+  .grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+// Grid principal
+.grid-container {
+  margin: 0 auto;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+
+// Colonnes
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    grid-column: span $i;
+    display: flex; // Chaque colonne est en flex
+    flex-direction: column; // Par défaut vertical
+  }
+}
+
+// Modifiers flex pour les colonnes
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.toolbar-button-round{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    height: 60px;
+    width: 60px;
+    border-radius: 40px;
+    color: $primary-color;
+    background-color: $background-tool-color;
+    text-decoration: none;
+
+    &:hover {
+        background-color: $primary-color;
+        color: $background-tool-color;
+        cursor: pointer;
+    }
+}
+
+.toolbar-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    height: 60px;
+    min-width: 60px;
+    padding: 0px 20px;
+    border-radius: 40px;
+    color: $primary-color;
+    background-color: $background-tool-color;
+    text-decoration: none;
+
+    &:hover {
+        background-color: $primary-color;
+        color: $background-tool-color;
+        cursor: pointer;
+    }
+}

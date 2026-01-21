@@ -12,6 +12,7 @@ public static class DTOHelper
         {
             Status = model.Status,
             Description = model.Description,
+            Summary = model.Summary,
             Owner = model.Owner.ToDTOEmbedded(),
             Customer = model.Customer?.ToDTOEmbedded()
         };
@@ -43,6 +44,20 @@ public static class DTOHelper
             ContactPhone = model.ContactPhone,
             ContactEmail = model.ContactEmail
         };
+    }
+    #endregion
+
+    #region TodoTask
+    public static ResponseTodoTask ToDTO(this TodoTask model)
+    {
+        var todo = new ResponseTodoTask
+        {
+            Description = model.Description,
+            DueDate = model.DueDate,
+            Status = model.Status
+        };
+        todo.FeedEntityInfo(model);
+        return todo;
     }
     #endregion
 }

@@ -4,6 +4,7 @@ import { User } from "./User";
 
 export interface Project extends Entity {
     description?: string;
+    summary?: string;
     status: ProjectStatus;
     owner: User | null;
     customer: Customer | null;

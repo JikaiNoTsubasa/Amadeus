@@ -4,6 +4,7 @@ import { Dashboard } from './pages/dashboard/dashboard';
 import { MyProjects } from './pages/myprojects/myprojects';
 import { Login } from './pages/login/login';
 import { authGuard } from './services/AuthGuard';
+import { MyProfile } from './pages/myprofile/myprofile';
 
 export const routes: Routes = [
     {
@@ -18,6 +19,10 @@ export const routes: Routes = [
             {
                 path: 'my-projects',
                 component: MyProjects
+            },
+            {
+                path: 'my-profile',
+                component: MyProfile
             }
         ]
     },

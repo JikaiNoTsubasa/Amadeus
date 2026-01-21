@@ -1,8 +1,14 @@
 <div>
     <app-toolbar title="My Projects" [showSearch]="true">
+        <a class="toolbar-button-round" routerLink="/create-project" title="Create New Project">
+            <i class="fa fa-plus"></i>
+        </a>
+        <div class="toolbar-button">
+            <i class="fa fa-filter"></i> Filter
+        </div>
     </app-toolbar>
 
-    <div class="master-title">WORKSPACE</div>
+    <div class="master-title">PROJECTS</div>
     
     <div class="grid">
         @for (project of myProjects; track $index) {
