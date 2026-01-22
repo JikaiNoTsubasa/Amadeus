@@ -3,6 +3,12 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "C#: amadeus-api Debug",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}/AmadeusBack/amadeus-api/amadeus-api.csproj"
+    },
+    {
       "name": "ng serve --port 4300",
       "type": "chrome",
       "request": "launch",

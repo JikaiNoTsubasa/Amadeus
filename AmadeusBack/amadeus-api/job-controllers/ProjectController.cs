@@ -21,7 +21,7 @@ public class ProjectController(ProjectManager manager) : AmaController
     }
 
     [HttpGet]
-    [Route("api/myprojects")]
+    [Route("api/me/projects")]
     public IActionResult GetMyProjects()
     {
         var projects = _manager.FetchMyProjects(_loggedUserId).Select(p => p.ToDTO()).ToList();

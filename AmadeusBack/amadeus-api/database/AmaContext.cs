@@ -8,6 +8,9 @@ public class AmaContext(DbContextOptions<AmaContext> options) : DbContext(option
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Project> Projects { get; set; }
+    public DbSet<ProjectPhase> ProjectPhases { get; set; }
+    public DbSet<ProjectTask> ProjectTasks { get; set; }
+    public DbSet<RegisteredTaskTime> RegisteredTaskTime { get; set; }
     public DbSet<Customer> Customers { get; set; }
     public DbSet<TodoTask> Todos { get; set; }
 

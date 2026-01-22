@@ -96,15 +96,16 @@ var context = scope.ServiceProvider.GetRequiredService<AmaContext>();
 context.Database.EnsureCreated();
 User user = new()
 {
-    Email = "stephane.biehler.priv@gmail.com",
-    Name = "Stéphane Biehler Hertzog",
+    Email = "demo@dummy.com",
+    Name = "Demo User",
     CanLogin = true,
-    PasswordHash = hashService.HashPassword("sbiuserS88"),
+    PasswordHash = hashService.HashPassword("demo"),
     CreatedAt = DateTime.UtcNow
 };
 context.Users.Add(user);
 context.SaveChanges();
 */
+
 
 log.Info("Amadeus API started.");
 app.Run();

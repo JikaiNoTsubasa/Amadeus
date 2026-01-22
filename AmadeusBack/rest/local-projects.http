@@ -1,0 +1,41 @@
+### Variables
+@baseUrl = http://localhost:5300/api
+
+### Login
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "identifier": "demo@dummy.com",
+  "password": "demo"
+}
+
+###
+@token = {{login.response.body.access_token}}
+
+### GET Projects
+GET {{baseUrl}}/projects
+Authorization: Bearer {{token}}
+
+### GET my projects
+GET {{baseUrl}}/me/projects
+Authorization: Bearer {{login.response.body.access_token}}
+
+### Create project
+POST {{baseUrl}}/projects
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.access_token}}
+
+{
+  "name" : "Amadeus demo project"
+}
+
+### Add phase to project
+POST {{baseUrl}}/projects/4/phases
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.access_token}}
+
+{
+  "name" : "Preparation"
+}
