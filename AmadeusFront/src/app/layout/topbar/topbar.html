@@ -1,3 +1,16 @@
-<div class="topbar">
-    <span class="title">Amadeus</span>
+<div class="topbar-wrapper">
+  <div class="user-pill" (click)="toggleDropdown($event)">
+    <i class="fa-solid fa-circle-user"></i>
+    <span class="user-name">{{ userName }}</span>
+    <i class="fa-solid fa-chevron-down" [class.rotated]="dropdownOpen"></i>
+  </div>
+
+  @if (dropdownOpen) {
+    <div class="dropdown-menu" (click)="$event.stopPropagation()">
+      <a class="dropdown-item" routerLink="/my-profile" (click)="closeDropdown()">
+        <i class="fa-solid fa-user"></i>
+        My Profile
+      </a>
+    </div>
+  }
 </div>

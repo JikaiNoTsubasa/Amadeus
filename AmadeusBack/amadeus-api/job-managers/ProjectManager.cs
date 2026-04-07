@@ -61,6 +61,12 @@ public class ProjectManager(AmaContext context) : AmaManager(context)
         log.Info($"Project with ID: {projectId} deleted successfully.");
     }
 
+    public Project FetchProject(long projectId)
+    {
+        var project = GeneralProjectQuery().FirstOrDefault(p => p.Id == projectId) ?? throw new Exception($"Project with ID {projectId} does not exist.");
+        return project;
+    }
+
     #endregion
 
     #region Phases
