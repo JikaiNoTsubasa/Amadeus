@@ -3,6 +3,7 @@ import { Entity } from "./Entity";
 import { User } from "./User";
 
 export interface Project extends Entity {
+    code: string | null;
     description?: string;
     summary?: string;
     status: ProjectStatus;

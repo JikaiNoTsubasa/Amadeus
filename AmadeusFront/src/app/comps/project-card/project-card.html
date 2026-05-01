@@ -11,7 +11,12 @@
             <div class="avatar-tooltip">Unknown</div>
         </div>
     }
-    <div class="title">{{ project?.name ?? "No Name" }}</div>
+    <div class="title">
+        @if (project?.code) {
+            {{ project?.code }} | 
+        }
+        {{ project?.name ?? "No Name" }}
+    </div>
     <div class="chip">{{ project?.status }}</div>
     <div class="description">
         {{ project?.summary ?? "No Summary" | truncate:150:'[...]' }}

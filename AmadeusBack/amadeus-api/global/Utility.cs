@@ -10,6 +10,6 @@ public static class Utility
             ? customerName.Substring(0, 3).ToUpper() 
             : customerName.ToUpper().PadRight(3, 'X');
         string idx = 285.ToString("D6");
-        return prefix + idx;
+        return "P" + prefix + idx;
     }
 }

@@ -50,7 +50,7 @@ export class ProjectDetail implements OnInit {
   loadProject() {
     this.loadingProject = true;
     this.errorProject = null;
-    this.amaService.fetchProject(this.projectId!).subscribe({
+    this.amaService.fetchProjectById(this.projectId!).subscribe({
       next: (project) => {
         this.project = project;
         this.loadingProject = false;

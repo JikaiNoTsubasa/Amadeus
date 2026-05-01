@@ -1,6 +1,7 @@
 using System;
 using amadeus_api.database;
 using amadeus_api.database.models;
+using amadeus_api.global;
 using log4net;
 using Microsoft.EntityFrameworkCore;
 
@@ -47,6 +48,10 @@ public class ProjectManager(AmaContext context) : AmaManager(context)
 
         _context.Projects.Add(project);
         _context.SaveChanges();
+
+        // Create code
+        project.Code = Utility.GenerateProjectCode(project.Customer?.Name ?? "Internal", project.Id);
+
         log.Info($"Project created successfully with ID: {project.Id}");
 
         return project;

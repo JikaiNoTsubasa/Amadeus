@@ -11,6 +11,7 @@ public static class DTOHelper
         var prj = new ResponseProject
         {
             Status = model.Status,
+            Code = model.Code,
             Description = model.Description,
             Summary = model.Summary,
             Owner = model.Owner.ToDTOEmbedded(),
