@@ -5,6 +5,7 @@ import { MyProjects } from './pages/myprojects/myprojects';
 import { Login } from './pages/login/login';
 import { authGuard } from './services/AuthGuard';
 import { MyProfile } from './pages/myprofile/myprofile';
+import { ProjectDetail } from './pages/project-detail/project-detail';
 
 export const routes: Routes = [
     {
@@ -23,6 +24,10 @@ export const routes: Routes = [
             {
                 path: 'my-profile',
                 component: MyProfile
+            },
+            {
+                path: 'project/:id',
+                component: ProjectDetail
             }
         ]
     },

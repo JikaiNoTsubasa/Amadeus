@@ -1,0 +1,185 @@
+@use '../../styles/variables' as *;
+
+// ─── Project Header ────────────────────────────────────────────────────────────
+.project-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 16px 0 8px;
+
+  .header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .project-name {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 0;
+      color: $foreground-color-black;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: #555;
+
+        i { font-size: 12px; }
+      }
+    }
+  }
+
+  .header-right {
+    flex-shrink: 0;
+    padding-top: 6px;
+  }
+}
+
+// ─── Status Chips ─────────────────────────────────────────────────────────────
+.status-chip {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 40px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  &.status-new          { background: #dbeafe; color: #1d4ed8; }
+  &.status-in-progress  { background: #fef3c7; color: #b45309; }
+  &.status-completed    { background: $primary-color; color: $foreground-color-black; }
+  &.status-cancelled    { background: #fee2e2; color: #b91c1c; }
+  &.status-deleted      { background: #f3f4f6; color: #6b7280; }
+  &.status-archived     { background: #e5e7eb; color: #374151; }
+}
+
+// ─── Tab Bar ──────────────────────────────────────────────────────────────────
+.tab-bar {
+  display: flex;
+  gap: 6px;
+  margin: 20px 0 0;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0;
+
+  .tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    border-radius: 10px 10px 0 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #555;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    position: relative;
+    bottom: -2px;
+
+    i { font-size: 13px; }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
+      color: $foreground-color-black;
+    }
+
+    &.active {
+      background: $background-tool-color;
+      color: $primary-color;
+      border-bottom: 2px solid $background-tool-color;
+      font-weight: 500;
+    }
+  }
+}
+
+// ─── Tab Content ──────────────────────────────────────────────────────────────
+.tab-content {
+  padding: 20px 0;
+}
+
+// ─── Summary Tab ──────────────────────────────────────────────────────────────
+.summary-tab {
+  .card-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888;
+    margin-bottom: 10px;
+  }
+
+  .detail-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+
+    &:last-child { border-bottom: none; }
+
+    .detail-label {
+      font-weight: 500;
+      color: #555;
+      min-width: 100px;
+    }
+  }
+
+  .muted {
+    font-size: 13px;
+    color: #aaa;
+  }
+}
+
+// ─── Tasks Tab ────────────────────────────────────────────────────────────────
+.tasks-tab {
+  .tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+// ─── Documents Tab ────────────────────────────────────────────────────────────
+.documents-tab { }
+
+// ─── Empty State ──────────────────────────────────────────────────────────────
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 60px 20px;
+  color: #bbb;
+
+  i { font-size: 40px; }
+
+  p {
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+// ─── Error Banner ─────────────────────────────────────────────────────────────
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  background: #fee2e2;
+  color: #b91c1c;
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 12px 0;
+}

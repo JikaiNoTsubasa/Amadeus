@@ -1,0 +1,163 @@
+<div>
+  <app-toolbar [title]="project?.name ?? 'Project'">
+    <a class="toolbar-button-round" routerLink="/my-projects" title="Back to projects">
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+  </app-toolbar>
+
+  @if (loadingProject) {
+    <app-loading-bar></app-loading-bar>
+  }
+
+  @if (errorProject) {
+    <div class="error-banner">
+      <i class="fa-solid fa-triangle-exclamation"></i> {{ errorProject }}
+    </div>
+  }
+
+  @if (project && !loadingProject) {
+    <!-- Project header -->
+    <div class="project-header">
+      <div class="header-left">
+        <h1 class="project-name">{{ project.name }}</h1>
+        <div class="header-meta">
+          @if (project.customer) {
+            <span class="meta-item">
+              <i class="fa-solid fa-building"></i> {{ project.customer.name }}
+            </span>
+          }
+          @if (project.owner) {
+            <span class="meta-item">
+              <i class="fa-solid fa-user"></i> {{ project.owner.name }}
+            </span>
+          }
+          <span class="meta-item">
+            <i class="fa-regular fa-calendar"></i> {{ project.createdAt | date:'mediumDate' }}
+          </span>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="status-chip status-{{ project.status.toLowerCase().replace('_', '-') }}">
+          {{ project.status.replace('_', ' ') }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Tab bar -->
+    <div class="tab-bar">
+      @for (tab of tabs; track tab.id) {
+        <button
+          class="tab-btn"
+          [class.active]="activeTab === tab.id"
+          (click)="setTab(tab.id)">
+          <i [class]="tab.icon"></i>
+          {{ tab.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Tab content -->
+    <div class="tab-content">
+
+      <!-- SUMMARY TAB -->
+      @if (activeTab === 'summary') {
+        <div class="summary-tab">
+          @if (project.summary) {
+            <div class="card">
+              <div class="card-label">Summary</div>
+              <p>{{ project.summary }}</p>
+            </div>
+          }
+          @if (project.description) {
+            <div class="card">
+              <div class="card-label">Description</div>
+              <p>{{ project.description }}</p>
+            </div>
+          }
+          <div class="row">
+            <div class="col-6">
+              <div class="card">
+                <div class="card-label">Details</div>
+                <div class="detail-row">
+                  <span class="detail-label">Status</span>
+                  <span class="status-chip status-{{ project.status.toLowerCase().replace('_', '-') }}">
+                    {{ project.status.replace('_', ' ') }}
+                  </span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Created</span>
+                  <span>{{ project.createdAt | date:'mediumDate' }}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Updated</span>
+                  <span>{{ project.updatedAt | date:'mediumDate' }}</span>
+                </div>
+                @if (project.createdBy) {
+                  <div class="detail-row">
+                    <span class="detail-label">Created by</span>
+                    <span>{{ project.createdBy.name }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="card">
+                <div class="card-label">Team</div>
+                @if (project.owner) {
+                  <div class="detail-row">
+                    <span class="detail-label">Owner</span>
+                    <span>{{ project.owner.name }}</span>
+                  </div>
+                }
+                @if (project.customer) {
+                  <div class="detail-row">
+                    <span class="detail-label">Customer</span>
+                    <span>{{ project.customer.name }}</span>
+                  </div>
+                }
+                @if (!project.owner && !project.customer) {
+                  <p class="muted">No team info available.</p>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- TASKS TAB -->
+      @if (activeTab === 'tasks') {
+        <div class="tasks-tab">
+          @if (loadingTasks) {
+            <app-loading-bar></app-loading-bar>
+          } @else if (errorTasks) {
+            <div class="error-banner">
+              <i class="fa-solid fa-triangle-exclamation"></i> {{ errorTasks }}
+            </div>
+          } @else if (tasks.length === 0) {
+            <div class="empty-state">
+              <i class="fa-solid fa-list-check"></i>
+              <p>No tasks for this project yet.</p>
+            </div>
+          } @else {
+            <div class="tasks-list">
+              @for (task of tasks; track task.id) {
+                <app-todo [todo]="task"></app-todo>
+              }
+            </div>
+          }
+        </div>
+      }
+
+      <!-- DOCUMENTS TAB -->
+      @if (activeTab === 'documents') {
+        <div class="documents-tab">
+          <div class="empty-state">
+            <i class="fa-solid fa-file-circle-plus"></i>
+            <p>No documents attached yet.</p>
+          </div>
+        </div>
+      }
+
+    </div>
+  }
+</div>

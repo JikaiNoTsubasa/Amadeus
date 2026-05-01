@@ -33,6 +33,10 @@ export class AmaService {
     fetchProjectById(id: number): Observable<Project> {
         return this.http.get<Project>(`${this.url}/projects/${id}`);
     }
+
+    fetchProjectTasks(id: number): Observable<TodoTask[]> {
+        return this.http.get<TodoTask[]>(`${this.url}/projects/${id}/todos`);
+    }
     //#endregion
 
     //#region Todo Tasks
