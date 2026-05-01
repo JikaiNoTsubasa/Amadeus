@@ -1,4 +1,4 @@
-<a class="project-card" routerLink="/project/{{ project?.id }}">
+<div class="project-card">
     @if (project?.owner?.avatar) {
         <div class="avatar-container">
             <img class="avatar" [src]="project?.owner?.avatar"/>
@@ -16,4 +16,4 @@
     <div class="description">
         {{ project?.summary ?? "No Summary" | truncate:150:'[...]' }}
     </div>
-</a>
+</div>

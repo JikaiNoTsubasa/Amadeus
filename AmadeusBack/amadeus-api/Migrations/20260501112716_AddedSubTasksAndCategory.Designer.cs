@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using amadeus_api.database;
@@ -11,9 +12,11 @@ using amadeus_api.database;
 namespace amadeus_api.Migrations
 {
     [DbContext(typeof(AmaContext))]
-    partial class AmaContextModelSnapshot : ModelSnapshot
+    [Migration("20260501112716_AddedSubTasksAndCategory")]
+    partial class AddedSubTasksAndCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

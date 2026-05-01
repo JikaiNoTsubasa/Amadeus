@@ -1,21 +1,30 @@
 <div>
-    <app-toolbar title="My Projects" [showSearch]="true">
+    <!--
+        <app-toolbar title="My Projects" [showSearch]="false">
         <a class="toolbar-button-round" routerLink="/create-project" title="Create New Project">
             <i class="fa fa-plus"></i>
         </a>
-        <div class="toolbar-button">
-            <i class="fa fa-filter"></i> Filter
-        </div>
     </app-toolbar>
+-->
 
-    <div class="master-title">PROJECTS</div>
-    
-    <div class="grid">
-        @for (project of myProjects; track $index) {
-            <div class="grid-element">
-                <app-project-card [project]="project">
-                </app-project-card>
-            </div>
+    <!--<div class="master-title">PROJECTS</div>-->
+
+    <app-tab-container
+        [tabs]="tabs"
+        (tabChanged)="onTabChanged($event)"
+        (tabClosed)="onTabClosed($event)">
+
+        @if (activeTab?.type === TabType.PROJECT_LIST) {
+            <app-project-list-view
+                [projects]="myProjects"
+                (projectOpen)="onProjectOpen($event)">
+            </app-project-list-view>
         }
-    </div>
+
+        @if (activeTab?.type === TabType.PROJECT_DETAIL && activeTab?.data) {
+            <app-project-detail-view
+                [project]="activeTab!.data">
+            </app-project-detail-view>
+        }
+    </app-tab-container>
 </div>

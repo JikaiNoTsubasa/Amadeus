@@ -15,9 +15,17 @@ public class ProjectTask : Entity
     public long? PhaseId { get; set; }
     public ProjectPhase? Phase { get; set; }
 
+    [ForeignKey(nameof(ParentTask))]
+    public long? ParentTaskId { get; set; }
+    public ProjectTask? ParentTask { get; set; }
+
+    public List<ProjectTask>? SubTasks { get; set; }
+
     public string? Content { get; set; }
     public DateTime? DueDate { get; set; }
     public Priority Priority { get; set; }
     public int ExpectedTimeMinutes { get; set; }
     public List<RegisteredTaskTime>? RegisteredTimes { get; set; }
+
+    
 }

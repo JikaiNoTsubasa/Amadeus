@@ -1,0 +1,84 @@
+@use '../../styles/variables' as *;
+
+.filters-container {
+  background-color: $background-panel-color;
+  border-radius: 10px;
+  padding: 20px;
+
+  .filter-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .filter-item {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+
+    &.search-filter {
+      flex: 2;
+      min-width: 300px;
+    }
+  }
+
+  .filter-input,
+  .filter-select {
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    border: 2px solid transparent;
+    border-radius: 40px;
+    background-color: white;
+    color: $foreground-color-black;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s ease;
+
+    &:focus {
+      border-color: $primary-color;
+      transform: scale(1.02);
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $foreground-color-black;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .filter-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 40px;
+    background-color: $background-tool-color;
+    color: $primary-color;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: $primary-color;
+      color: $background-tool-color;
+      transform: scale(1.05);
+    }
+
+    &.clear-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    i {
+      font-size: 14px;
+    }
+  }
+}

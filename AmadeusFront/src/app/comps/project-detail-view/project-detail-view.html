@@ -1,0 +1,55 @@
+<div class="project-detail-view">
+  @if (project) {
+    <div class="detail-header">
+      <div class="header-left">
+        <h1 class="project-name">{{ project.name }}</h1>
+        <div class="chip status-chip">{{ project.status }}</div>
+      </div>
+      @if (project.owner) {
+        <div class="owner-info">
+          <img class="avatar" [src]="project.owner.avatar || 'default_avatar.png'"
+               [alt]="project.owner.name">
+          <span class="owner-name">{{ project.owner.name }}</span>
+        </div>
+      }
+    </div>
+
+    <div class="detail-content">
+      <div class="detail-section">
+        <h2 class="section-title">Summary</h2>
+        <p class="section-text">{{ project.summary || 'No summary provided' }}</p>
+      </div>
+
+      <div class="detail-section">
+        <h2 class="section-title">Description</h2>
+        <p class="section-text">{{ project.description || 'No description provided' }}</p>
+      </div>
+
+      @if (project.customer) {
+        <div class="detail-section">
+          <h2 class="section-title">Customer</h2>
+          <p class="section-text">{{ project.customer.name }}</p>
+        </div>
+      }
+
+      <div class="detail-section">
+        <h2 class="section-title">Details</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">Created:</span>
+            <span class="info-value">{{ project.createdAt | date:'medium' }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Updated:</span>
+            <span class="info-value">{{ project.updatedAt | date:'medium' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-section placeholder">
+        <h2 class="section-title">Tasks & Phases</h2>
+        <p class="placeholder-text">Coming soon...</p>
+      </div>
+    </div>
+  }
+</div>

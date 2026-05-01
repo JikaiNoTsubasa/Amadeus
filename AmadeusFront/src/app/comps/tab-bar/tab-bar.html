@@ -1,0 +1,14 @@
+<div class="tab-bar">
+  @for (tab of tabs; track tab.id) {
+    <div
+      class="tab"
+      [class.active]="tab.active"
+      [class.closeable]="tab.closeable"
+      (click)="selectTab(tab)">
+      <span class="tab-label">{{ tab.label }}</span>
+      @if (tab.closeable) {
+        <i class="fa fa-times tab-close" (click)="closeTab($event, tab)"></i>
+      }
+    </div>
+  }
+</div>

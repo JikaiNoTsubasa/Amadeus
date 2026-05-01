@@ -1,0 +1,46 @@
+<div class="filters-container">
+  <div class="filter-row">
+    <div class="filter-item search-filter">
+      <input
+        type="text"
+        class="filter-input"
+        placeholder="Search projects..."
+        [value]="filters.searchText"
+        (input)="onSearchChange($any($event.target).value)">
+      <i class="fa fa-search search-icon"></i>
+    </div>
+
+    <div class="filter-item">
+      <select
+        class="filter-select"
+        [value]="filters.statusFilter"
+        (change)="onStatusChange($any($event.target).value)">
+        @for (option of statusOptions; track option.value) {
+          <option [value]="option.value">{{ option.label }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="filter-item">
+      <select
+        class="filter-select"
+        [value]="filters.sortBy"
+        (change)="onSortChange($any($event.target).value)">
+        @for (option of sortOptions; track option.value) {
+          <option [value]="option.value">Sort by {{ option.label }}</option>
+        }
+      </select>
+    </div>
+
+    <button class="filter-button" (click)="toggleSortOrder()" title="Toggle sort order">
+      <i class="fa" [class.fa-sort-up]="filters.sortOrder === SortOrder.ASC"
+         [class.fa-sort-down]="filters.sortOrder === SortOrder.DESC"></i>
+    </button>
+
+    @if (filters.searchText || filters.statusFilter !== 'ALL') {
+      <button class="filter-button clear-button" (click)="clearFilters()" title="Clear filters">
+        <i class="fa fa-times"></i> Clear
+      </button>
+    }
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="tab-container">
+  <app-tab-bar
+    [tabs]="tabs"
+    (tabSelect)="onTabSelect($event)"
+    (tabClose)="onTabClose($event)">
+  </app-tab-bar>
+
+  <div class="tab-content">
+    <ng-content></ng-content>
+  </div>
+</div>

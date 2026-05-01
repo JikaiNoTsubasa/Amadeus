@@ -10,6 +10,7 @@ public class AmaContext(DbContextOptions<AmaContext> options) : DbContext(option
     public DbSet<Project> Projects { get; set; }
     public DbSet<ProjectPhase> ProjectPhases { get; set; }
     public DbSet<ProjectTask> ProjectTasks { get; set; }
+    public DbSet<ProjectCategory> ProjectCategories { get; set; }
     public DbSet<RegisteredTaskTime> RegisteredTaskTime { get; set; }
     public DbSet<Customer> Customers { get; set; }
     public DbSet<TodoTask> Todos { get; set; }
@@ -55,11 +56,19 @@ public class AmaContext(DbContextOptions<AmaContext> options) : DbContext(option
             .WithMany(p => p.Tasks)
             .HasForeignKey(p => p.ProjectId);
 
+        modelBuilder.Entity<ProjectTask>()
+            .HasOne(t => t.ParentTask)
+            .WithMany(t => t.SubTasks)
+            .HasForeignKey(t => t.ParentTaskId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         modelBuilder.Entity<Project>()
             .HasOne(u => u.CMDB)
             .WithOne(p => p.Project);
 
-        
+        modelBuilder.Entity<Project>()
+            .HasIndex(u => u.Code)
+            .IsUnique();
 
         base.OnModelCreating(modelBuilder);
     }

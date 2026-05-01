@@ -1,0 +1,19 @@
+<div class="project-list-view">
+  <app-project-list-filters
+    [filters]="filters"
+    (filtersChange)="onFiltersChanged($event)">
+  </app-project-list-filters>
+
+  <div class="grid">
+    @for (project of filteredProjects; track project.id) {
+      <div class="grid-element" (click)="onProjectClick(project)">
+        <app-project-card [project]="project"></app-project-card>
+      </div>
+    }
+    @empty {
+      <div class="empty-state">
+        <p>No projects found matching your filters.</p>
+      </div>
+    }
+  </div>
+</div>

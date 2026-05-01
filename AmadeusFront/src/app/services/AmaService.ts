@@ -27,7 +27,11 @@ export class AmaService {
 
     //#region Projects
     fetchMyProjects(): Observable<Project[]> {
-        return this.http.get<Project[]>(`${this.url}/myprojects`);
+        return this.http.get<Project[]>(`${this.url}/me/projects`);
+    }
+
+    fetchProjectById(id: number): Observable<Project> {
+        return this.http.get<Project>(`${this.url}/projects/${id}`);
     }
     //#endregion
 
