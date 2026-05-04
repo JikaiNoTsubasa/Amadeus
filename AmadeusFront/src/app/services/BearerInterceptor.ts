@@ -1,13 +1,12 @@
 import { HttpRequest, HttpHandlerFn, HttpEvent, HttpErrorResponse } from "@angular/common/http";
 import { inject } from "@angular/core";
-import { Router } from "@angular/router";
 import { Observable, catchError, throwError } from "rxjs";
 import { AuthService } from "./AuthService";
 
 export function provideBearerInterceptor(req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
-    let auth = inject(AuthService);
-    let router = inject(Router);
-    let token = sessionStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
+    const authService = inject(AuthService);
+
     if (token) {
         req = req.clone({
             setHeaders: {
@@ -15,11 +14,12 @@ export function provideBearerInterceptor(req: HttpRequest<any>, next: HttpHandle
             }
         });
     }
+
     return next(req).pipe(
         catchError((err: HttpErrorResponse) => {
           if (err.status === 401) {
-            auth.logout();
-            router.navigate(['/login']);
+            console.log('401 Unauthorized - Déconnexion automatique');
+            authService.logout();
           }
           return throwError(() => err);
         })

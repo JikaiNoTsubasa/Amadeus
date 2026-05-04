@@ -1,0 +1,31 @@
+@use '../../styles/variables' as *;
+
+.project-tasks-list {
+  .loading-state,
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    color: $foreground-color-black;
+    opacity: 0.6;
+
+    i {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: $primary-color;
+    }
+
+    p {
+      font-size: 16px;
+      margin: 0;
+    }
+  }
+
+  .tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+}

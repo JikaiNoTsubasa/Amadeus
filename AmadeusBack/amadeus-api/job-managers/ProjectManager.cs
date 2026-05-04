@@ -72,6 +72,12 @@ public class ProjectManager(AmaContext context) : AmaManager(context)
         return project;
     }
 
+    public List<ProjectTask>? FetchProjectTasks(long projectId)
+    {
+        List<ProjectTask>? tasks = [.. _context.ProjectTasks.Include(p=>p.SubTasks).Where(p => p.ProjectId == projectId && !p.IsDeleted)];
+        return tasks;
+    }
+
     #endregion
 
     #region Phases

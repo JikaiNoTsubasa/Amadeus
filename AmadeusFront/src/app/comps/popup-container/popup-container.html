@@ -1,0 +1,3 @@
+@for (popup of popups$ | async; track popup.id) {
+  <app-popup [popup]="popup"></app-popup>
+}

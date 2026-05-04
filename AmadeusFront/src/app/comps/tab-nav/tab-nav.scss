@@ -1,0 +1,40 @@
+@use '../../styles/variables' as *;
+
+.tab-nav {
+  display: flex;
+  gap: 5px;
+  border-bottom: 2px solid rgba($background-tool-color, 0.1);
+  margin-bottom: 20px;
+
+  .tab-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    color: $foreground-color-black;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    user-select: none;
+
+    i {
+      font-size: 14px;
+    }
+
+    &:hover {
+      opacity: 1;
+      color: $primary-color;
+    }
+
+    &.active {
+      opacity: 1;
+      color: $background-tool-color;
+      border-bottom-color: $primary-color;
+      font-weight: 600;
+    }
+  }
+}

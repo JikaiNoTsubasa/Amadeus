@@ -14,42 +14,60 @@
       }
     </div>
 
+    <app-tab-nav
+      [tabs]="tabs"
+      [activeTabId]="activeTabId"
+      (tabChange)="onTabChange($event)">
+    </app-tab-nav>
+
     <div class="detail-content">
-      <div class="detail-section">
-        <h2 class="section-title">Summary</h2>
-        <p class="section-text">{{ project.summary || 'No summary provided' }}</p>
-      </div>
-
-      <div class="detail-section">
-        <h2 class="section-title">Description</h2>
-        <p class="section-text">{{ project.description || 'No description provided' }}</p>
-      </div>
-
-      @if (project.customer) {
+      @if (activeTabId === 'overview') {
         <div class="detail-section">
-          <h2 class="section-title">Customer</h2>
-          <p class="section-text">{{ project.customer.name }}</p>
+          <h2 class="section-title">Summary</h2>
+          <p class="section-text">{{ project.summary || 'No summary provided' }}</p>
+        </div>
+
+        <div class="detail-section">
+          <h2 class="section-title">Description</h2>
+          <p class="section-text">{{ project.description || 'No description provided' }}</p>
+        </div>
+
+        @if (project.customer) {
+          <div class="detail-section">
+            <h2 class="section-title">Customer</h2>
+            <p class="section-text">{{ project.customer.name }}</p>
+          </div>
+        }
+
+        <div class="detail-section">
+          <h2 class="section-title">Details</h2>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-label">Created:</span>
+              <span class="info-value">{{ project.createdAt | date:'medium' }}</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Updated:</span>
+              <span class="info-value">{{ project.updatedAt | date:'medium' }}</span>
+            </div>
+          </div>
         </div>
       }
 
-      <div class="detail-section">
-        <h2 class="section-title">Details</h2>
-        <div class="info-grid">
-          <div class="info-item">
-            <span class="info-label">Created:</span>
-            <span class="info-value">{{ project.createdAt | date:'medium' }}</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Updated:</span>
-            <span class="info-value">{{ project.updatedAt | date:'medium' }}</span>
-          </div>
-        </div>
-      </div>
+      @if (activeTabId === 'tasks') {
+        <app-project-tasks-list [project]="project"></app-project-tasks-list>
+      }
 
-      <div class="detail-section placeholder">
-        <h2 class="section-title">Tasks & Phases</h2>
-        <p class="placeholder-text">Coming soon...</p>
-      </div>
+      <!-- Ajoutez facilement de nouveaux tabs ici -->
+      <!--
+      @if (activeTabId === 'phases') {
+        <app-project-phases-list [project]="project"></app-project-phases-list>
+      }
+
+      @if (activeTabId === 'files') {
+        <app-project-files-list [project]="project"></app-project-files-list>
+      }
+      -->
     </div>
   }
 </div>

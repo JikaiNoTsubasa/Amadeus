@@ -36,6 +36,14 @@ public class ProjectController(ProjectManager manager) : AmaController
         return StatusCode(200, project);
     }
 
+    [HttpGet]
+    [Route("api/projects/{id:long}/tasks")]
+    public IActionResult GetProjectTasks([FromRoute] long id)
+    {
+        var project = _manager.FetchProject(id).ToDTO();
+        return StatusCode(200, project);
+    }
+
     [HttpPost]
     [Route("api/projects")]
     public IActionResult CreateProject([FromBody] RequestCreateProject model)

@@ -1,0 +1,27 @@
+<div class="project-tasks-list">
+  @if (loading) {
+    <div class="loading-state">
+      <i class="fa fa-spinner fa-spin"></i>
+      <p>Loading tasks...</p>
+    </div>
+  }
+
+  @if (!loading && tasks.length === 0) {
+    <div class="empty-state">
+      <i class="fa fa-tasks"></i>
+      <p>No tasks yet for this project</p>
+    </div>
+  }
+
+  @if (!loading && tasks.length > 0) {
+    <div class="tasks-grid">
+      @for (task of tasks; track task.id) {
+        <app-todo
+          [todo]="task"
+          (evNextState)="onNextState(task)"
+          (evDelete)="onDelete(task)">
+        </app-todo>
+      }
+    </div>
+  }
+</div>
